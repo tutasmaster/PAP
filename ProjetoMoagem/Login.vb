@@ -14,6 +14,8 @@
 
         If result.Count() > 0 Then
             MsgBox("The user exists in the database")
+            FormMenu.Show()
+            Me.Hide()
         Else
             MsgBox("The user doesn't exist in the database")
         End If
@@ -28,5 +30,9 @@
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DefaultReader.PrepareConnection("db_moagem")
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Login()
     End Sub
 End Class

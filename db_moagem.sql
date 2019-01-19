@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2019 at 05:50 PM
+-- Generation Time: Jan 19, 2019 at 06:13 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_moagem`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_clientes`
+--
+
+CREATE TABLE `tb_clientes` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Phone` varchar(9) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Address` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_clientes`
+--
+
+INSERT INTO `tb_clientes` (`ID`, `Name`, `Phone`, `Email`, `Address`) VALUES
+(1, 'Nome SegundoNome Apelido Apelido', '91XXXXXXX', 'nome@nome.nome', 'Cidade, R. de X XXX');
 
 -- --------------------------------------------------------
 
@@ -47,11 +68,27 @@ INSERT INTO `tb_login` (`ID`, `Username`, `Password`, `Perms`) VALUES
 --
 
 --
+-- Indexes for table `tb_clientes`
+--
+ALTER TABLE `tb_clientes`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tb_login`
 --
 ALTER TABLE `tb_login`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `Username` (`Username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_clientes`
+--
+ALTER TABLE `tb_clientes`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
