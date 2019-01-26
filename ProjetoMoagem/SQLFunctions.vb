@@ -1,13 +1,63 @@
 ﻿Imports MySql.Data.MySqlClient
 
+Public Class SQLComboBox
+    Inherits ComboBox
+
+    Public Pairs As New List(Of Object)
+    Public Sub New()
+
+    End Sub
+
+    Public Sub AddItem(str As String, Optional pair As String = "")
+        Items.Add(str)
+        Pairs.Add(pair)
+    End Sub
+
+    Public Sub Clear()
+        Items.Clear()
+        Pairs.Clear()
+    End Sub
+
+    Public Sub RemovePairAt(ByVal index)
+        Items.RemoveAt(index)
+        Pairs.RemoveAt(index)
+    End Sub
+
+    Public Sub RemoveCurrentPair()
+        Items.RemoveAt(SelectedIndex)
+        Pairs.RemoveAt(SelectedIndex)
+    End Sub
+
+    Public Function GetPairAt(ByVal index) As Object
+        Dim str As Object() = Pairs.Item(index)
+        Return str
+    End Function
+
+    Public Function GetCurrentPair() As Object
+        Dim str As Object() = Pairs.Item(SelectedIndex)
+        Return str
+    End Function
+
+    Public Function GetValueAt(ByVal index) As Object
+        Dim str As Object() = Items.Item(index)
+        Return str
+    End Function
+
+    Public Function GetCurrentValue() As Object
+        Dim str As Object() = Items.Item(SelectedIndex)
+        Return str
+    End Function
+End Class
+
 Module SQLFunctions
+
+
     Class SQLReader
         Dim connection As New MySqlConnection
         Dim dataReader As MySqlDataReader
         Public adapter As MySqlDataAdapter
         Public isPrepared As Boolean = False
-        Public dt As New DataTable
-        Public ds As New DataSet
+
 
         Public Sub PrepareConnection(database As String,
                                      Optional server As String = "localhost",
@@ -45,13 +95,12 @@ Module SQLFunctions
             Return list
         End Function
 
-        Public Sub GetDataToSource(query As String, ByRef bindingSource As BindingSource, Optional warn As Boolean = True)
+        Public Sub GetDataToSource(query As String, ByRef dataTable As DataTable, Optional warn As Boolean = True)
             Dim list As New List(Of List(Of String))
-            dt.Clear()
+            dataTable.Clear()
             Try
                 adapter = New MySqlDataAdapter(query, connection)
-                adapter.Fill(dt)
-                bindingSource.DataSource = dt
+                adapter.Fill(dataTable)
 
             Catch e As Exception
                 If warn Then
@@ -60,6 +109,48 @@ Module SQLFunctions
                 End If
             Finally
             End Try
+        End Sub
+
+        Public Sub GetDataToSource(query As String, ByRef dataGrid As DataGridView, Optional warn As Boolean = True)
+            Dim list As New List(Of List(Of String))
+            Dim dt As New DataTable
+            Try
+                adapter = New MySqlDataAdapter(query, connection)
+                adapter.Fill(dt)
+                dataGrid.DataSource = dt
+
+            Catch e As Exception
+                If warn Then
+                    MsgBox(e.Message)
+                    MsgBox("Command: " & vbNewLine & query)
+                End If
+            Finally
+            End Try
+        End Sub
+
+        Public Sub FillComboBox(box As ComboBox, table As String, field As String, Optional clear As Boolean = True)
+            If clear Then
+                box.Items.Clear()
+            End If
+
+            Dim dat = GetData("SELECT DISTINCT " & field & " FROM " & table)
+            For Each row In dat
+                box.Items.Add(row(0))
+            Next
+            box.SelectedIndex = 0
+        End Sub
+
+        Public Sub FillSQLComboBox(box As SQLComboBox, table As String, display As String, pair As String, Optional clear As Boolean = True)
+            If clear Then
+                box.Items.Clear()
+            End If
+
+            Dim dat = GetData("SELECT DISTINCT " & display & "," & pair & " FROM " & table)
+            For Each row In dat
+                box.AddItem(row(0), row(1))
+            Next
+
+            box.SelectedIndex = 0
         End Sub
 
     End Class
