@@ -13,7 +13,9 @@
         )
 
         If result.Count() > 0 Then
-            MsgBox("The user exists in the database")
+            'MsgBox("The user exists in the database")
+            Permissions.name = TB_Username.Text
+
             FormMenu.Show()
             Me.Hide()
         Else

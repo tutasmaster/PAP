@@ -1,0 +1,1 @@
+C:\xampp\mysql\bin\mysqldump.exe -u root db_moagem > %cd%\db_moagem.sql

@@ -140,6 +140,44 @@ Module SQLFunctions
             box.SelectedIndex = 0
         End Sub
 
+        Public Sub FillListBox(box As ListBox, table As String, field As String, Optional distinct As Boolean = True, Optional clear As Boolean = True)
+            If clear Then
+                box.Items.Clear()
+            End If
+            Dim dat
+            If distinct Then
+                dat = GetData("SELECT DISTINCT " & field & " FROM " & table)
+            Else
+                dat = GetData("SELECT " & field & " FROM " & table)
+            End If
+
+            For Each row In dat
+                box.Items.Add(row(0))
+            Next
+            Try
+                box.SelectedIndex = 0
+            Catch ex As Exception
+
+            End Try
+
+        End Sub
+
+        Public Sub FillList(box As List(Of String), table As String, field As String, Optional distinct As Boolean = True, Optional clear As Boolean = True)
+            If clear Then
+                box.Clear()
+            End If
+            Dim dat
+            If distinct Then
+                dat = GetData("SELECT DISTINCT " & field & " FROM " & table)
+            Else
+                dat = GetData("SELECT " & field & " FROM " & table)
+            End If
+
+            For Each row In dat
+                box.Add(row(0))
+            Next
+        End Sub
+
         Public Sub FillSQLComboBox(box As SQLComboBox, table As String, display As String, pair As String, Optional clear As Boolean = True)
             If clear Then
                 box.Items.Clear()
