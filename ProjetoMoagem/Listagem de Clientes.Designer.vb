@@ -244,7 +244,7 @@ Partial Class Listagem_de_Clientes
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Listagem_de_Clientes"
-        Me.Text = "Listagem_de_Clientes"
+        Me.Text = "Listagem de Clientes"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TbclientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Db_moagemDataSet, System.ComponentModel.ISupportInitialize).EndInit()

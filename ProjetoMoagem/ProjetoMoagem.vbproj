@@ -48,7 +48,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ico.ico</ApplicationIcon>
+    <ApplicationIcon>newlogo_9so_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs.vb" />
+    <Compile Include="Conversions.vb" />
     <Compile Include="db_moagemDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +91,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>db_moagemDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPicker.Designer.vb">
+      <DependentUpon>ItemPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPicker.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listagem de Clientes.Designer.vb">
       <DependentUpon>Listagem de Clientes.vb</DependentUpon>
@@ -131,8 +138,20 @@
     <Compile Include="Produtos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SplashScreen.Designer.vb">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SQLFunctions.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserPicker.Designer.vb">
+      <DependentUpon>UserPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserPicker.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vendas.Designer.vb">
       <DependentUpon>Vendas.vb</DependentUpon>
@@ -142,6 +161,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ItemPicker.resx">
+      <DependentUpon>ItemPicker.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Listagem de Clientes.resx">
       <DependentUpon>Listagem de Clientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos.resx">
       <DependentUpon>Produtos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPicker.resx">
+      <DependentUpon>UserPicker.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendas.resx">
       <DependentUpon>Vendas.vb</DependentUpon>
@@ -200,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <Content Include="newlogo_9so_icon.ico" />
+    <None Include="Resources\NEWLOGO.png" />
+    <None Include="Resources\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
