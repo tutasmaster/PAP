@@ -120,7 +120,7 @@ Partial Class ItemPicker
         Me.Controls.Add(Me.ListBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "ItemPicker"
-        Me.Text = "ItemPicker"
+        Me.Text = "Produtos"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

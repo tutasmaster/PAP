@@ -30,6 +30,8 @@ Partial Class Vendas
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -43,9 +45,10 @@ Partial Class Vendas
         '
         'NumericUpDown3
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(13, 285)
+        Me.NumericUpDown3.Location = New System.Drawing.Point(83, 285)
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(290, 20)
+        Me.NumericUpDown3.Size = New System.Drawing.Size(220, 20)
         Me.NumericUpDown3.TabIndex = 19
         '
         'Button1
@@ -68,7 +71,7 @@ Partial Class Vendas
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 342)
+        Me.Button3.Location = New System.Drawing.Point(12, 341)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(291, 23)
         Me.Button3.TabIndex = 22
@@ -93,11 +96,31 @@ Partial Class Vendas
         Me.Button5.Text = "Selecionar Produto"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(10, 367)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
+        Me.Label1.TabIndex = 26
+        Me.Label1.Text = "Total: "
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 287)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 13)
+        Me.Label2.TabIndex = 27
+        Me.Label2.Text = "Quantidade:"
+        '
         'Vendas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(315, 376)
+        Me.ClientSize = New System.Drawing.Size(315, 386)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -107,9 +130,10 @@ Partial Class Vendas
         Me.Controls.Add(Me.ListBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Vendas"
-        Me.Text = "Vendas"
+        Me.Text = "Registo de Vendas"
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ListBox1 As ListBox
@@ -119,4 +143,6 @@ Partial Class Vendas
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

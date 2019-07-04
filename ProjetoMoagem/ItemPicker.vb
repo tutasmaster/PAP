@@ -66,7 +66,7 @@
         Label2.Text = "Nome: " & ItemList(ListBox1.SelectedIndex).Name
         TextBox1.Text = ItemList(ListBox1.SelectedIndex).Description
         Label3.Text = "Peso: " & ItemList(ListBox1.SelectedIndex).Weight
-        Label4.Text = "Preço: " & ItemList(ListBox1.SelectedIndex).Price
+        Label4.Text = "Preço: " & ItemList(ListBox1.SelectedIndex).Price * 0.01.ToString("0.00€")
     End Sub
 
     Private Sub ItemPicker_Load(sender As Object, e As EventArgs) Handles MyBase.Load

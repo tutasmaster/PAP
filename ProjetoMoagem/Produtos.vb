@@ -14,7 +14,7 @@
         UpdateDetails()
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -35,7 +35,7 @@
 
     Sub ChangePicture(ByRef path As String)
         Try
-            PictureBox1.BackgroundImage = Image.FromFile(path)
+            'PictureBox1.BackgroundImage = Image.FromFile(path)
         Catch ex As Exception
 
         End Try
